@@ -1,13 +1,16 @@
-import { Menu, ChevronDown, SlidersHorizontal, Search, Clock, AlertTriangle, Flame, CheckCircle2 } from "lucide-react";
+import { Menu, ChevronDown, SlidersHorizontal, Search, Clock, AlertTriangle, Flame, CheckCircle2, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusBadge } from "./StatusBadge";
 import { AvatarGroup } from "./Avatar";
 import type { Ticket } from "@/data/mockData";
+import { CreateTicketDialog } from "./CreateTicketDialog";
 
 interface Props {
   tickets: Ticket[];
   selectedId: string | null;
   onSelect: (id: string) => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
 }
 
 const priorityIcons: Record<string, React.ElementType> = {
@@ -17,7 +20,7 @@ const priorityIcons: Record<string, React.ElementType> = {
   Low: CheckCircle2,
 };
 
-export function TicketList({ tickets, selectedId, onSelect }: Props) {
+export function TicketList({ tickets, selectedId, onSelect, searchQuery, onSearchChange }: Props) {
   return (
     <div className="w-[380px] border-r border-border flex flex-col bg-card shrink-0">
       {/* Sub-header */}
@@ -29,9 +32,16 @@ export function TicketList({ tickets, selectedId, onSelect }: Props) {
             <ChevronDown className="h-3.5 w-3.5" />
           </button>
         </div>
-        <button className="text-muted-foreground hover:text-foreground transition-colors">
-          <SlidersHorizontal className="h-5 w-5" />
-        </button>
+        <div className="flex items-center gap-2">
+          <CreateTicketDialog>
+            <button className="text-muted-foreground hover:text-brand transition-colors" title="New Ticket">
+              <Plus className="h-5 w-5" />
+            </button>
+          </CreateTicketDialog>
+          <button className="text-muted-foreground hover:text-foreground transition-colors">
+            <SlidersHorizontal className="h-5 w-5" />
+          </button>
+        </div>
       </div>
 
       {/* Search */}
@@ -41,6 +51,8 @@ export function TicketList({ tickets, selectedId, onSelect }: Props) {
           <input
             type="text"
             placeholder="Search tickets"
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
             className="w-full bg-muted rounded-md pl-9 pr-3 py-2.5 text-sm placeholder:text-muted-foreground outline-none border border-border focus:border-brand focus:ring-2 focus:ring-brand/20 transition-colors"
           />
         </div>

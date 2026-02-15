@@ -1,8 +1,18 @@
-import { ChevronDown, ChevronRight, Calendar, X, MinusCircle, CheckCircle2 } from "lucide-react";
+import { ChevronDown, ChevronRight, Calendar, X, MinusCircle, CheckCircle2, Flame, AlertTriangle } from "lucide-react";
 import { UserAvatar } from "./Avatar";
 import { StatusBadge } from "./StatusBadge";
 import type { Ticket } from "@/data/mockData";
 import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateTicket } from "@/lib/api";
+import { toast } from "sonner";
 
 interface Props {
   ticket: Ticket;
@@ -22,7 +32,10 @@ function PropertyRow({ label, children, trailing }: { label: string; children: R
 
 function SelectField({ value, icon }: { value: string; icon?: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-between w-full px-3 py-2 bg-card border border-border rounded-md text-sm cursor-pointer hover:bg-muted transition-colors focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20">
+    <div
+      onClick={() => toast.info("This property is read-only in this demo")}
+      className="flex items-center justify-between w-full px-3 py-2 bg-card border border-border rounded-md text-sm cursor-pointer hover:bg-muted transition-colors focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+    >
       <div className="flex items-center gap-2">
         {icon}
         <span>{value}</span>
@@ -53,14 +66,72 @@ function CollapsibleSection({ title, count, children, defaultOpen = false }: { t
   );
 }
 
+const priorities = [
+  { value: "Low", icon: CheckCircle2, color: "text-muted-foreground" },
+  { value: "Medium", icon: CheckCircle2, color: "text-success" },
+  { value: "High", icon: Flame, color: "text-warning" },
+  { value: "Urgent", icon: AlertTriangle, color: "text-destructive" },
+];
+
 export function TicketProperties({ ticket }: Props) {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (updates: Partial<Ticket>) => updateTicket(ticket.id, updates),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["tickets"] });
+      toast.success("Ticket updated");
+    },
+    onError: () => {
+      toast.error("Failed to update ticket");
+    },
+  });
+
+  const handlePriorityChange = (value: string) => {
+    mutation.mutate({ priority: value as any });
+  };
+
   return (
     <aside className="w-80 border-l border-border bg-gray-50 p-6 overflow-y-auto scrollbar-thin shrink-0 space-y-6">
       <PropertyRow label="Priority">
-        <SelectField value={ticket.priority} icon={<MinusCircle className="h-5 w-5 text-success" />} />
+        <Select value={ticket.priority || "Medium"} onValueChange={handlePriorityChange}>
+          <SelectTrigger className="w-full bg-card border-border">
+            <div className="flex items-center gap-2">
+              {priorities.find((p) => p.value === ticket.priority)?.icon && (
+                <span className={priorities.find((p) => p.value === ticket.priority)?.color}>
+                  {(() => {
+                    const Icon = priorities.find((p) => p.value === ticket.priority)?.icon;
+                    return Icon ? <Icon className="h-5 w-5" /> : null;
+                  })()}
+                </span>
+              )}
+              <SelectValue placeholder="Select priority" />
+            </div>
+          </SelectTrigger>
+          <SelectContent>
+            {priorities.map((p) => (
+              <SelectItem key={p.value} value={p.value}>
+                <div className="flex items-center gap-2">
+                  <p.icon className={`h-4 w-4 ${p.color}`} />
+                  {p.value}
+                </div>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </PropertyRow>
 
-      <PropertyRow label="Assigned To" trailing={<span className="text-sm text-brand cursor-pointer hover:underline font-medium">Assign to me</span>}>
+      <PropertyRow
+        label="Assigned To"
+        trailing={
+          <button
+            onClick={() => toast.info("Auto-assign feature coming soon")}
+            className="text-sm text-brand cursor-pointer hover:underline font-medium"
+          >
+            Assign to me
+          </button>
+        }
+      >
         <SelectField value={ticket.assignee.name} icon={<UserAvatar initials={ticket.assignee.initials} size="sm" />} />
       </PropertyRow>
 
@@ -81,7 +152,10 @@ export function TicketProperties({ ticket }: Props) {
       </PropertyRow>
 
       <PropertyRow label="Tags">
-        <button className="flex items-center gap-1 text-sm text-brand hover:underline font-medium transition-colors">
+        <button
+          onClick={() => toast.info("Tag management coming soon")}
+          className="flex items-center gap-1 text-sm text-brand hover:underline font-medium transition-colors"
+        >
           Add Tag +
         </button>
       </PropertyRow>
