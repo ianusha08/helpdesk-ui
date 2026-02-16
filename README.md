@@ -1,9 +1,9 @@
-🛠 Helpdesk Dashboard
+## 🛠 Helpdesk Dashboard
 
 A full-stack Helpdesk Ticket Management system built with React (frontend) and Node.js + Express (backend).
 The application supports complete ticket lifecycle management with full CRUD functionality.
 
-✨Features
+## ✨Features
 - Create new tickets
 - View all tickets
 - Update ticket status and priority
@@ -13,7 +13,7 @@ The application supports complete ticket lifecycle management with full CRUD fun
 - REST API integration
 - Modular and scalable folder structur
 
-  🧱 Tech Stack
+  ## 🧱 Tech Stack
   
   Frontend:
 - React (Vite)
