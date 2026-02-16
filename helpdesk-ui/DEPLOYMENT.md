@@ -32,9 +32,7 @@ This guide explains how to deploy the full-stack Helpdesk application.
 1.  Log in to **Netlify** and click **Add new site** -> **Import from existing project**.
 2.  Connect your GitHub repository.
 3.  **Configuration**:
-    -   **Base directory**: `helpdesk-ui` (or leave empty if it's the root) -> *Based on your current structure, it seems the root is `helpdesk-ui` inside the repo? Adjust accordingly.*
-        -   *If your `package.json` is in the root:* leave Base directory empty.
-        -   *If your Frontend is in a subfolder:* specify that folder.
+    -   **Base directory**: `helpdesk-ui` (CRITICAL: Your project is inside a subfolder)
     -   **Build command**: `npm run build`
     -   **Publish directory**: `dist`
 4.  **Environment Variables**:
