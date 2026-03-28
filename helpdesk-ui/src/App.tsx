@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Placeholder from "./pages/Placeholder";
+import Analytics from "./pages/Analytics";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +26,7 @@ const App = () => (
           <Route path="/building" element={<Placeholder title="Building" />} />
           <Route path="/database" element={<Placeholder title="Database" />} />
           <Route path="/history" element={<Placeholder title="History" />} />
-          <Route path="/analytics" element={<Placeholder title="Analytics" />} />
+          <Route path="/analytics" element={<Analytics />} />
           <Route path="/settings" element={<Placeholder title="Settings" />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
