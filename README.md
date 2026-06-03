@@ -128,3 +128,19 @@ Inspired by products such as:
 - Activity Logs & Audit Trail
 
 ---
+
+## 👩‍💻 Author
+
+**Anusha**
+
+- BTech CSE (AI & ML)
+- Frontend Developer
+- Exploring AI, Full-Stack Development, and Product Engineering
+
+GitHub: https://github.com/ianusha08
+
+---
+
+## 📄 License
+
+This project is available under the MIT License.
