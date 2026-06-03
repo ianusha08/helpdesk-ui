@@ -134,7 +134,7 @@ Inspired by products such as:
 **Anusha**
 
 - BTech CSE (AI & ML)
-- Frontend Developer
+- Full Stack Developer
 - Exploring AI, Full-Stack Development, and Product Engineering
 
 GitHub: https://github.com/ianusha08
