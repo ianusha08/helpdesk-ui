@@ -49,3 +49,31 @@ cd helpdesk-ui/server
 npm install
 node index.js
 ```
+Create a `.env` file inside the project root:
+
+```env
+VITE_API_URL=http://localhost:3001/api/tickets
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── components/
+│   ├── helpdesk/      # Domain components
+│   └── ui/            # Reusable UI components
+│
+├── data/
+│   └── mockData.ts    # Mock ticket & analytics data
+│
+├── lib/
+│   └── api.ts         # API client
+│
+└── pages/
+    ├── Index.tsx      # Main tickets view
+    └── Analytics.tsx  # Analytics dashboard
+```
+
+---
