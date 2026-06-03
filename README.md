@@ -1,6 +1,3 @@
-Readme · MD
-Copy
-
 # 🎧 Helpdesk UI
  
 A modern, full-featured support ticket management interface — inspired by tools like Linear and Zendesk. Built with React, TypeScript, and Tailwind CSS.
