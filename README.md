@@ -77,3 +77,54 @@ src/
 ```
 
 ---
+
+## 📌 About
+
+Built to explore React architecture patterns, component composition, and data-driven UI design.
+
+This project demonstrates:
+
+- React Query state management
+- Component composition patterns
+- Type-safe development with TypeScript
+- Scalable UI architecture
+- Data visualization using Recharts
+- Consistent design systems using Tailwind CSS
+
+---
+
+## 💡 Why I Built This
+
+This project was built to understand how modern support desk platforms manage tickets, communication workflows, and analytics at scale.
+
+The primary goals were:
+
+- Practice React architecture and component composition
+- Improve TypeScript proficiency
+- Build reusable UI systems
+- Work with complex state management
+- Create data-rich dashboards
+- Simulate real-world SaaS product interfaces
+
+Inspired by products such as:
+
+- Linear
+- Zendesk
+- Jira Service Management
+
+---
+
+## 🚧 Future Improvements
+
+- User Authentication & Authorization
+- Role-Based Access Control
+- Ticket Assignment Automation
+- Email Notifications
+- File Attachments
+- Dark / Light Theme Toggle
+- Database Integration
+- Real-time Updates with WebSockets
+- Team Management Features
+- Activity Logs & Audit Trail
+
+---
