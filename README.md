@@ -70,3 +70,20 @@ src/
 ## 📌 About
  
 Built to explore React architecture patterns, component composition, and data-driven UI design. The project demonstrates state management with React Query, compound component patterns, and building consistent design systems with Tailwind CSS custom tokens.
+
+``` 
+```
+
+### 📌 Why I Built This
+
+This project was built to explore how modern support desk platforms manage tickets, communication, and analytics in a scalable interface.
+
+The goal was to practice:
+
+- React architecture and component composition
+- TypeScript for type-safe development
+- State management with React Query
+- Building reusable UI systems with Tailwind CSS
+- Data visualization using Recharts
+
+It draws inspiration from products like Linear, Zendesk, and Jira Service Management.
