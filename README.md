@@ -87,3 +87,16 @@ The goal was to practice:
 - Data visualization using Recharts
 
 It draws inspiration from products like Linear, Zendesk, and Jira Service Management.
+
+### 🚧 Future Improvements
+
+- User authentication and authorization
+- Role-based access control
+- Ticket assignment automation
+- Email notifications
+- File attachment support
+- Dark/Light theme switcher
+- Backend database integration
+- Real-time updates using WebSockets
+
+
