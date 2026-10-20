@@ -69,4 +69,15 @@ VITE_API_URL=http://localhost:3001/api/tickets
 
 Ensure the backend is running on the configured API URL.
 
+## 🗺️ Future Improvements
+
+- Authentication and role-based access control
+- Database integration
+- File attachments
+- Email notifications
+- Real-time ticket updates
+- Team management
+
+
+
 
