@@ -58,3 +58,15 @@ npm install
 node index.js
 ```
 
+
+### 4. Environment Configuration
+
+Create a `.env` file in the frontend root directory:
+
+```env
+VITE_API_URL=http://localhost:3001/api/tickets
+```
+
+Ensure the backend is running on the configured API URL.
+
+
