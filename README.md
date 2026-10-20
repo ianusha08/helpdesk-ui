@@ -13,3 +13,48 @@ A modern helpdesk and support ticket management interface inspired by platforms 
 - 🗑️ **Delete Confirmation** – Confirmation dialogs for destructive actions.
 - 📱 **Responsive Interface** – Adaptable UI across screen sizes.
 
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React | Frontend |
+| TypeScript | Type safety |
+| Tailwind CSS | Styling |
+| Vite | Development and build tool |
+| shadcn/ui | UI components |
+| React Query | Server-state management |
+| Recharts | Data visualisation |
+| React Router | Client-side routing |
+| Express.js | Backend |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ianusha08/helpdesk-ui.git
+cd helpdesk-ui
+```
+
+### 2. Start the frontend
+
+```bash
+npm install
+npm run dev
+```
+
+### 3. Start the backend
+
+Open another terminal:
+
+```bash
+cd server
+npm install
+node index.js
+```
+
